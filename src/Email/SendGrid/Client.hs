@@ -96,13 +96,16 @@ serialiseCc (CarbonCopies ccs) =
   serialiseEmailName "cc" "ccname" ccs
 
 serialiseBcc :: BlindCarbonCopies -> [(B.ByteString, B.ByteString)]
-serialiseBcc (BlindCarbonCopies bccs) = serialiseEmailName "bcc" "bccname" bccs
+serialiseBcc (BlindCarbonCopies bccs) =
+  serialiseEmailName "bcc" "bccname" bccs
 
 serialiseFrom :: FromAddress -> [(B.ByteString, B.ByteString)]
-serialiseFrom (FromAddress emailAddy) = [("from", serialiseEmailAddress emailAddy)]
+serialiseFrom (FromAddress emailAddy) =
+  [("from", serialiseEmailAddress emailAddy)]
 
 serialiseSenderName :: SenderName -> [(B.ByteString, B.ByteString)]
-serialiseSenderName (SenderName sender) = [("fromname", encodeUtf8 sender)]
+serialiseSenderName (SenderName sender) =
+  [("fromname", encodeUtf8 sender)]
 
 serialiseEmailBody :: EmailBody -> [(B.ByteString, B.ByteString)]
 serialiseEmailBody = undefined
@@ -111,7 +114,8 @@ serialiseEmailSubject :: EmailSubject -> [(B.ByteString, B.ByteString)]
 serialiseEmailSubject = undefined
 
 serialiseEmail :: Email -> [(B.ByteString, B.ByteString)]
-serialiseEmail (Email recipients cc bcc fromAddress senderName emailBody subject)
+serialiseEmail (Email recipients cc bcc fromAddress
+                      senderName emailBody subject)
   = undefined
 
 type SendGridEndpoint = String
